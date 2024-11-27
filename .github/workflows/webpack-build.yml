@@ -22,7 +22,7 @@ jobs:
           node-version: 18  # Specify the Node.js version
 
       - name: Install dependencies
-        run: npm install
+        run: npm install  webpack webpack-cli
 
       - name: Run Webpack build
         run: npx webpack --config webpack.config.js
