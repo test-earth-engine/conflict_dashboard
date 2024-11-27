@@ -38,6 +38,8 @@ jobs:
           path: dist/*.* 
 
       - name: Deploy to GitHub Pages
+        env:
+          GH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}       
         run: |
           USERNAME=$(curl -s https://api.github.com/users/${GITHUB_ACTOR} | jq -r '.login')
           EMAIL=$(curl -s https://api.github.com/users/${GITHUB_ACTOR} | jq -r '.email')
