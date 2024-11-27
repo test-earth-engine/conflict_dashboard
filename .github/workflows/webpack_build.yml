@@ -41,12 +41,10 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}       
         run: |
-          USERNAME=$(curl -s https://api.github.com/users/${GITHUB_ACTOR} | jq -r '.login')
-          EMAIL=$(curl -s https://api.github.com/users/${GITHUB_ACTOR} | jq -r '.email')
-
-          echo $EMAIL
+          USERNAME=$(gh api user | jq -r '.login')
+          EMAIL=$(gh api user | jq -r '.email')
   
-          # Set Git user name and email using the retrieved values
+          # Set Git user name and email
           git config --global user.name "${USERNAME}"
           git config --global user.email "${EMAIL}"
           npm run deploy
