@@ -22,13 +22,21 @@ jobs:
           node-version: 18  # Specify the Node.js version
 
       - name: Install dependencies
-        run: npm install  webpack webpack-cli
+        run: |
+          npm install webpack webpack-cli
+          npm install gh-pages
 
-      - name: Run Webpack build
-        run: npx webpack --config webpack.config.js
+      - name: Build project
+        run: |
+          npm run build  
+          cp Frontend/ucdp_h.html dist/index.html
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: webpack-bundle
-          path: dist/main.js
+          path: dist/*.* 
+
+      - name: Deploy to GitHub Pages
+        run: npm run deploy
+
