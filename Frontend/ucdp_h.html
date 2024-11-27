@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two Horizontal Divs</title>
+    <style>
+        /* Make container occupy the full height of the page */
+        .container_class {
+            display: flex;
+            flex-direction: column; /* Stack rows vertically */
+            height: 100vh; /* Full viewport height */
+        }
+
+        /* Set row heights to 25% and 75% of the container */
+        .row_class {
+            display: flex; /* Arrange divs horizontally in each row */
+            width: 100%; /* Full width of the container */
+            border-bottom: 2px solid black; /* Thin line between rows */
+        }
+
+        /* Specific height for row_class_1 and row_class_2 */
+        #row_class_1 {
+            height: 35%; /* 25% height */
+        }
+
+        #row_class_2 {
+            height: 65%; /* 75% height */
+        }
+
+        /* .box_class_1_1 and .box_class_2_1 take 25% width */
+        #box_class_1_1, #box_class_2_1 {
+            width: 35%;
+        }
+
+        /* .box_class_1_2 and .box_class_2_2 take 75% width */
+        #box_class_2_2 {
+            width: 65%;
+        }
+
+        #box_class_1_2 {
+            width: 65%;
+            display: flex;
+            flex-direction: row;
+        }
+
+        #box_class_1_2_1, #box_class_1_2_2 {
+            width: 50%;
+        }
+        
+        #box_class_2_1 {
+            width: 35%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #box_class_2_1_1, #box_class_2_1_2 {
+            height: 50%;
+        }
+
+        .box_class {
+            height: 100%; /* Full height of its parent row */
+            background-color: #191A1A;
+            margin: 5px;
+        }
+
+        /* Add vertical line between boxes */
+        .box_class + .box_class {
+            border-left: 2px solid black; /* Vertical line between boxes */
+        }
+
+        #footer_container, #header_container {
+            color: #444444;
+            font-family: Arial, sans-serif;
+            text-align: right;
+            padding-left: 20px;
+            padding-right: 20px; 
+        }        
+    </style>
+
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js'></script>
+<script src="https://cdn.jsdelivr.net/npm/@turf/turf@7/turf.min.js"></script>
+
+</head>
+<body>
+
+<header id="header_container"> <p>DashBoard</p> </header> 
+
+<main>
+    <div class="container_class" id="container_class">
+        <div class="row_class" id="row_class_1">
+    
+            <div class="box_class" id="box_class_1_1">
+                <div id="buttons_b">
+                    <button id="button_a_static">
+                </div>
+                <div id="dropdown_a_container"></div>
+                <div id="message_a_container"></div> 
+                <div id="message_b_container"></div> 
+            </div>
+    
+            <div class="box_class" id="box_class_1_2">
+                <div class="box_class" id="box_class_1_2_1"></div>
+                <div class="box_class" id="box_class_1_2_2"></div>
+            </div>
+    
+        </div>
+        <div class="row_class" id="row_class_2">
+    
+            <div class="box_class" id="box_class_2_1">
+                <div class="box_class" id="box_class_2_1_1"></div>
+                <div class="box_class" id="box_class_2_1_2"></div>
+            </div>
+    
+            <div class="box_class" id="box_class_2_2">
+            </div>
+
+        </div>
+    </div>    
+</main>
+
+<footer id="footer_container"> <p>&copy; SpicyTech, 2024.</p> </footer>
+
+<!------------------------------------------------------------------------>
+<script type="module" src="Frontend2/main.js"></script>
+<!--script src="dist/bundle.js" type="module"></script-->
+<!------------------------------------------------------------------------>
+
+
+</body>
+</html>
