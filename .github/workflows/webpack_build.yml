@@ -39,7 +39,11 @@ jobs:
 
       - name: Deploy to GitHub Pages
         run: |
-          git config --global user.email "you@example.com"
-          git config --global user.name "Your Name"
+          USERNAME=$(curl -s https://api.github.com/users/${GITHUB_ACTOR} | jq -r '.login')
+          EMAIL=$(curl -s https://api.github.com/users/${GITHUB_ACTOR} | jq -r '.email')
+  
+          # Set Git user name and email using the retrieved values
+          git config --global user.name "${USERNAME}"
+          git config --global user.email "${EMAIL}"
           npm run deploy
 
