@@ -1,4 +1,9 @@
-"scripts": {
-  "build": "webpack --config webpack.config.js",
-  "deploy": "gh-pages -d dist"
+{
+  "name": "my-project",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "webpack --config webpack.config.js",  // Build the project with Webpack
+    "deploy": "gh-pages -d dist",  // Deploy the dist folder to GitHub Pages
+    "start": "webpack serve --config webpack.config.js --open --port 5000"  // Start the dev server
+  }
 }
