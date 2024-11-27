@@ -1,0 +1,34 @@
+name: Webpack Build
+
+on:
+  push:
+    branches:
+      - main  # Adjust to your target branch
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18  # Specify the Node.js version
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Webpack build
+        run: npx webpack --config webpack.config.js
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: webpack-bundle
+          path: dist/bundle.js
