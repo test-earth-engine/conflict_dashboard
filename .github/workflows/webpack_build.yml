@@ -16,6 +16,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        run : | 
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
+          echo "${{ github.actor }}" 
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -38,16 +45,10 @@ jobs:
           path: dist/*.* 
 
       - name: Deploy to GitHub Pages
-        #env:
-        #  GH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}       
-        run: |
-          echo "${{ secrets.PERSONAL_ACCESS_TOKEN }}" | gh auth login --with-token
-          
-          USERNAME=$(gh api user | jq -r '.login')
-          EMAIL=$(gh api user | jq -r '.email')
-  
-          # Set Git user name and email
-          git config --global user.name "${USERNAME}"
-          git config --global user.email "${EMAIL}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        run : | 
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
           npm run deploy
 
