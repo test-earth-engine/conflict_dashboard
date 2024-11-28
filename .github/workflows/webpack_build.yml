@@ -41,6 +41,8 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}       
         run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | gh auth login --with-token
+          
           USERNAME=$(gh api user | jq -r '.login')
           EMAIL=$(gh api user | jq -r '.email')
   
