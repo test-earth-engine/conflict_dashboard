@@ -52,7 +52,7 @@ async function graph_create(container, data)
             tickfont: {size:8, color: 'white'}
         },
         yaxis: {
-            title: {text:'Events / Days', font:{size:10}}, 
+            title: {text:'Events', font:{size:10}}, 
             //range: [0,135],  
             tickfont: {size:8, color: 'white'}
         }
