@@ -7,7 +7,7 @@ async function gpw_polulation_data_get()
     // reference here... 
     var url = null; 
     let year = 2020; 
-    url = `https://raw.githubusercontent.com/test-earth-engine/gee1/main/Jsons/ucdp_v241_y${year}_gpw_polulation.json`;
+    url = `https://raw.githubusercontent.com/test-earth-engine/gee1/main/Jsons/ucdp_v241_y${year}_gpw_population.json`;
 
     const jsonData = await tools.loadJson(url); 
     console.log(`[gpw_polulation_data_get] year:${year} length:${ jsonData.length }` );
